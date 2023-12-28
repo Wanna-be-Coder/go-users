@@ -3,14 +3,14 @@ package main
 import (
 	"net/http"
 
-	"github.com/Wanna-be-Coder/go-users/db"
+	database "github.com/Wanna-be-Coder/go-users/db"
 	"github.com/Wanna-be-Coder/go-users/users"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	router := mux.NewRouter()
-	db.Start()
+	database.InitDB()
 
 	router.HandleFunc("/users", users.CreateUser).Methods("POST")
 	router.HandleFunc("/users/{id}", users.GetUser).Methods("GET")
